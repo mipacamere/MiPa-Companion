@@ -1,0 +1,913 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap");
+
+/* Modern Theme with Gradient Accents */
+:root {
+  /* Primary Colors - Changed from sky blue to darker petroleum */
+  --primary: #1a7e73; /* Darkened petroleum */
+  --primary-dark: #146359; /* Even darker petroleum */
+  --primary-light: #3a9e94;
+  --primary-gradient: linear-gradient(135deg, #1a7e73, #3a9e94);
+
+  /* Secondary Colors */
+  --secondary: #fb7185;
+  --secondary-dark: #e11d48;
+  --secondary-light: #fda4af;
+  --secondary-gradient: linear-gradient(135deg, #fb7185, #f43f5e);
+
+  /* Semantic Colors */
+  --success: #10b981;
+  --success-light: #a7f3d0;
+  --danger: #ef4444;
+  --danger-light: #fecaca;
+  --warning: #f59e0b;
+
+  /* Neutral Colors - Changed background to white, body to light grey */
+  --background: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --border: #e2e8f0;
+
+  /* Elements */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Animation */
+  --transition: all 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f0f0; /* Light grey background */
+  color: var(--text-primary);
+  font-family: "Inter", -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Main Container */
+.app {
+  max-width: 100%;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #f0f0f0; /* Light grey background */
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Header & Navigation */
+.header {
+  background: var(--primary-gradient);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo:before {
+  content: "hotel";
+  font-family: "Material Symbols Rounded";
+}
+
+/* Language Switcher - Changed from round to square */
+.language-switcher {
+  position: relative;
+  z-index: 100;
+}
+
+.language-dropdown {
+  background-color: rgba(37, 37, 37, 0.15);
+  backdrop-filter: blur(10px);
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-sm); /* Changed from radius-full to radius-sm */
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 180px;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+.language-dropdown:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+/* Tab Navigation - Changed to look like folder tabs */
+.tabs {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.tab-headers {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px; /* Slightly increased gap */
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.tab-headers:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px; /* Slightly thicker line */
+  background-color: var(--border);
+  z-index: -1;
+}
+
+.tab-headers::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-headers button {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Increased gap */
+  padding: 16px 24px; /* Bigger padding */
+  background-color: #e2e8f0;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0; /* Slightly more rounded corners */
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-weight: 600; /* Increased font weight */
+  font-size: 16px; /* Increased font size */
+  min-width: fit-content;
+  position: relative;
+  margin-bottom: -1px;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.05); /* More shadow */
+}
+
+.tab-headers button .tab-icon {
+  font-family: "Material Symbols Rounded";
+  font-size: 22px; /* Increased icon size */
+}
+
+/* Regular active tab (petroleum color) */
+.tab-headers button.active {
+  background-color: var(--primary); /* Petroleum background for active tab */
+  color: white; /* White text */
+  border-color: var(--primary);
+  z-index: 2;
+}
+
+/* Special styling for the checkout tab when active */
+.tab-headers button.active[data-tab="checkout"] {
+  background-color: var(--danger); /* Red background */
+  color: white;
+  border-color: var(--danger);
+}
+
+.tab-headers button:hover:not(.active) {
+  background-color: #f1f5f9;
+  color: var(--text-primary);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.tab-content {
+  background-color: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) var(--radius);
+  padding: 32px; /* Increased padding */
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  position: relative;
+  z-index: 0;
+}
+
+/* Card Component */
+.card {
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  margin-bottom: 16px;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Check-in Buttons */
+.check-in-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.check-in-button {
+  position: relative;
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  font-size: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 1;
+}
+
+.check-in-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+/* Changed first button from petroleum to blue */
+.check-in-button:nth-child(1) {
+  background: linear-gradient(135deg, #2563eb, #3b82f6); /* Blue gradient */
+  color: white;
+}
+
+.check-in-button:nth-child(1):before {
+  background: linear-gradient(
+    135deg,
+    #1d4ed8,
+    #2563eb
+  ); /* Darker blue on hover */
+}
+
+.check-in-button:nth-child(2) {
+  background: var(--success);
+  color: white;
+}
+
+.check-in-button:nth-child(2):before {
+  background: #059669;
+}
+
+.check-in-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.check-in-button:hover:before {
+  opacity: 1;
+}
+
+/* Map Section - Changed from yellow to blue */
+.map-container {
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.map-iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  display: block;
+}
+
+.map-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6); /* Changed to blue */
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius);
+  margin-top: 16px;
+  transition: var(--transition);
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.map-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #1d4ed8,
+    #2563eb
+  ); /* Darker blue for hover */
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.map-button:after {
+  content: "location_on";
+  font-family: "Material Symbols Rounded";
+}
+
+.map-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.map-button:hover:before {
+  opacity: 1;
+}
+
+/* Checkout Section - Changed color accent to red */
+.checkout-section {
+  background-color: #f8fafc;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  margin-top: 24px;
+}
+
+.checkout-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkout-section h2:before {
+  content: "fact_check";
+  font-family: "Material Symbols Rounded";
+  color: var(--success); /* Changed from danger (red) to success (green) */
+}
+
+.checkout-section ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.checkout-section ul li:before {
+  content: "check_circle";
+  font-family: "Material Symbols Rounded";
+  margin-right: 10px;
+  color: var(--success); /* Changed from danger (red) to success (green) */
+}
+
+.checkout-section ul li:before {
+  content: "check_circle";
+  font-family: "Material Symbols Rounded";
+  margin-right: 10px;
+  color: var(--danger); /* Changed from success to danger (red) */
+}
+
+.checkout-section p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--danger);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 20px;
+  transition: var(--transition);
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.checkout-button:before {
+  content: "logout";
+  font-family: "Material Symbols Rounded";
+}
+
+.checkout-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #b91c1c;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.checkout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.checkout-button:hover:after {
+  opacity: 1;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.button-group button {
+  padding: 12px 20px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button-group button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-dark);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.button-group button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.button-group button:hover:after {
+  opacity: 1;
+}
+
+.button-group button.disabled {
+  background-color: var(--text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Breakfast Order Button */
+.breakfast-order-button {
+  width: 100%;
+  padding: 16px;
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  transition: var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.breakfast-order-button:before {
+  content: "restaurant";
+  font-family: "Material Symbols Rounded";
+}
+
+.breakfast-order-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #059669;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.breakfast-order-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.breakfast-order-button:hover:after {
+  opacity: 1;
+}
+
+/* Image Preview */
+.image-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.preview-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.preview-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.preview-item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.preview-item-content {
+  padding: 12px;
+}
+
+.preview-item button {
+  background-color: var(--danger-light);
+  color: var(--danger);
+  border: none;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.preview-item button:before {
+  content: "delete";
+  font-family: "Material Symbols Rounded";
+  font-size: 18px;
+}
+
+.preview-item button:hover {
+  background-color: var(--danger);
+  color: white;
+}
+
+/* Breakfast Items - Added + and - signs */
+.breakfast-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.breakfast-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.breakfast-item div:first-child {
+  flex-grow: 1;
+  font-weight: 500;
+}
+
+.breakfast-item div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Modified breakfast buttons with + and - signs */
+.breakfast-item button {
+  padding: 10px 16px;
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+}
+
+.breakfast-item button:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* First button with minus sign */
+.breakfast-item button:first-of-type:before {
+  content: "remove";
+  font-family: "Material Symbols Rounded";
+  font-size: 18px;
+}
+
+/* Second button with plus sign */
+.breakfast-item button:last-of-type:before {
+  content: "add";
+  font-family: "Material Symbols Rounded";
+  font-size: 18px;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26, 126, 115, 0.15);
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--text-primary);
+  color: white;
+  padding: 32px 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo:before {
+  content: "hotel";
+  font-family: "Material Symbols Rounded";
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: var(--transition);
+  opacity: 0.7;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-copyright {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Responsive Design - Enhanced mobile buttons */
+@media (max-width: 768px) {
+  .tab-content {
+    padding: 24px 20px; /* Adjusted padding */
+  }
+
+  .header {
+    padding: 12px 0;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .language-dropdown {
+    width: 100%;
+  }
+
+  /* Improved tab headers for mobile */
+  .tab-headers {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0;
+    overflow-x: auto;
+  }
+
+  .tab-headers button {
+    padding: 14px 18px; /* Bigger, but not too big for mobile */
+    font-size: 15px;
+    min-width: auto;
+    flex: none;
+  }
+
+  .tab-headers button .tab-icon {
+    font-size: 20px;
+  }
+}
+.button-group {
+  flex-direction: column;
+}
+
+.button-group button {
+  padding: 14px 20px; /* Increased size */
+  font-size: 16px; /* Increased size */
+}
+
+.image-preview {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.footer-content {
+  flex-direction: column;
+  text-align: center;
+}
+
+.footer-links {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Make breakfast item buttons bigger on mobile */
+.breakfast-item button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 12px;
+}
+
+/* Make all buttons larger on mobile */
+.check-in-button,
+.checkout-button,
+.breakfast-order-button,
+.map-button {
+  padding: 16px 24px;
+  font-size: 16px;
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .tab-headers button {
+    padding: 12px 16px; /* Still bigger than original */
+    font-size: 14px;
+  }
+
+  .tab-headers button .tab-icon {
+    font-size: 18px;
+  }
+
+  .tab-content {
+    padding: 20px 16px;
+  }
+}
